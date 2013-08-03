@@ -50,8 +50,40 @@
 	$chuva = ($umidade > 90);
 
 	if ($chuva) {
-		echo 'Está chuvendo';
+		echo 'Está chuvendo'.'<hr />';
 	} else {
-		echo 'Caiu neve por aqui';
+		echo 'Caiu neve por aqui'.'<hr />';
 	}
+
+	$f = 1;
+	if ($f == 5) {
+		echo "é igual a ";
+	}else{
+		echo "não é igual a ";
+	}
+
+	echo $f.'<hr />';
+
+	$salario 		= 1020;	// R$
+	$tempo_servico	= 12;	// meses
+	$tem_reclamacoes= FALSE; // boleano
+
+	if ($salario > 1000) {
+		if ($tempo_servico >= 12) {
+			if ($tem_reclamacoes != true) {
+				echo 'parabéns, você foi promovido <hr>';
+			}
+		}
+	}
+	if (($salario > 1000) and ($tempo_servico >= 12) and ($tem_reclamacoes != true)) {
+		echo 'parabéns, você foi promovido <hr>';
+	}
+
+	$resultado = ($valor_venda > 100) ? 'muito caro' : 'pode comprar';
+
+	if ($valor_venda > 100) {
+		$resultado = 'muito caro';
+	}else{
+		$resultado = 'pode comprar';
+	}	
  ?>
