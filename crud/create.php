@@ -1,6 +1,8 @@
 <?php 
 	require('config.php'); // O IDEAL E UTILIZAR O require POIS O include_once TENDE A DEIXAR A APLICACAO MAIS LENTA
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
+	echo '<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">';
+	echo '<script src="../js/bootstrap.min.js"></script>';
 
 	if (isset($_POST['sendform'])) {
 		// VARIAVEIS DE VALOR QUE DEVEM SER INSERIDAS NO BD
