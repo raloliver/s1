@@ -41,7 +41,8 @@
 		while ($resu_query = mysql_fetch_array($exec_query)) {
 	// TUDO QUE FOR INCLUIDO AQUI VAI SER REPETIDO BASEADO NOS RESULTADOS DA QUERY
 			echo '<li>';
-				echo '<a href="read.php?id='.$resu_query['id'].'">'.$resu_query['title'].'</a>';
+				echo '<a href="read.php?id='.$resu_query['id'].'">'.$resu_query['title'].'</a>&nbsp';
+				echo '<a href="edit.php?id='.$resu_query['id'].'"><i class="icon-edit"></i></a>';
 			echo '</li>';
 	// DEBUG
 	//	echo '<pre>';
