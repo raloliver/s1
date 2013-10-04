@@ -2,7 +2,23 @@
 	require('config.php'); // O IDEAL E UTILIZAR O require POIS O include_once TENDE A DEIXAR A APLICACAO MAIS LENTA
 	echo '<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />';
 	echo '<link href="../css/bootstrap.min.css" rel="stylesheet" media="screen">';
-	echo '<script src="../js/bootstrap.min.js"></script>';
+	echo '<script src="../js/bootstrap-transition.js"></script>';
+	echo '<script src="../js/bootstrap-alert.js"></script>';
+
+
+	//ACAO PARA DELETAR
+	if (!empty($_GET['del'])) {
+		//PARA QUE SEJA DELETADO O ITEM, SERA NECESSARIO CRIAR UMA VARIAVEL
+		$del_item		= mysql_real_escape_string($_GET['del']);
+		$del_query 		= "DELETE FROM rows_articles WHERE id = '$del_item'";
+		$delex_query	= mysql_query($del_query) or die(mysql_error());
+		//AVISO PARA INFORMAR QUE O ITEM FOI DELETADO
+		if ($delex_query) {
+			echo '<div class="alert">
+					<strong>Aviso!</strong> Item excluído com sucesso.
+				  </div>';
+		}
+	}
 
 	//SELECT=Seleciona colunas //FROM=Seleciona tabela //WHERE=Seleciona campo //GROUP BY=Agrupa //ORDER BY=Ordena
 	//LIMIT=Limita a exibição //OFFSET=Remove o último da lista
@@ -14,7 +30,7 @@
 	if (!empty($_GET['id'])) {
 
 		//PARA EXIBIR O ITEM, E NECESSARIO UTILIZAR A QUERY E CRIAR UMA NOVA VARIAVEL PARA O ITEM
-		$id_item	= mysql_real_escape_string($_GET['id']);
+		$id_item	= mysql_real_escape_string($_GET['id']);		
 		$cons_item 	= "SELECT * FROM rows_articles WHERE id = '$id_item' ";
 		$exec_item 	= mysql_query($cons_item) or die(mysql_error());
 		//NESTE CASO NAO E NECESSARIO O LOOPING, POIS IREMOS BUSCAR APENAS UM VALOR
@@ -42,7 +58,8 @@
 	// TUDO QUE FOR INCLUIDO AQUI VAI SER REPETIDO BASEADO NOS RESULTADOS DA QUERY
 			echo '<li>';
 				echo '<a href="read.php?id='.$resu_query['id'].'">'.$resu_query['title'].'</a>&nbsp';
-				echo '<a href="edit.php?id='.$resu_query['id'].'"><i class="icon-edit"></i></a>';
+				echo '<a href="edit.php?id='.$resu_query['id'].'"><i class="icon-edit"></i>&nbsp</a>';
+				echo '<a href="read.php?del='.$resu_query['id'].'"><i class="icon-remove"></i></a>';
 			echo '</li>';
 	// DEBUG
 	//	echo '<pre>';

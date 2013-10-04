@@ -20,7 +20,9 @@
 		$acc_exe 	= mysql_query($acc_query) or die (mysql_errno());
 
 		if ($acc_exe) {
-			echo 'Post atualizado com sucesso!';	
+			echo '<div class="alert alert-success">
+					<strong>Aviso!</strong> Item atualizado com sucesso.
+				  </div>';	
 		}
 		
 		echo '<hr/>'; // AGORA É NECESSÁRIO INFORMAR O VALOR DE ACORDO COM O ID QUE SERA INFORMADO PARA APENAS ATUALIAZAR O BANCO
